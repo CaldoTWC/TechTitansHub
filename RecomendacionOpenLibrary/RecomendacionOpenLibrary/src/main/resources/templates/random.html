@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Random Book Recommendation</title>
+</head>
+<body>
+    <h1>Recomendación Aleatoria de Libro</h1>
+    
+    <div id="bookRecommendation">
+        <!-- Mostrar información del libro aleatorio -->
+        <h2 th:text="${book.title}">Title</h2>
+        <p><strong>Autor:</strong> <span th:text="${book.author}">Author</span></p>
+        <img th:src="${book.coverUrl}" alt="Portada del libro" width="150">
+    </div>
+
+    <!-- Botón para obtener una nueva recomendación aleatoria -->
+    <form action="/random" method="get">
+        <button type="submit">Obtener Nueva Recomendación Aleatoria</button>
+    </form>
+
+    <br>
+    <a href="/">Volver a la página principal</a>
+    <br>
+    <a href="/recommendations">Ver recomendaciones por género</a>
+</body>
+</html>

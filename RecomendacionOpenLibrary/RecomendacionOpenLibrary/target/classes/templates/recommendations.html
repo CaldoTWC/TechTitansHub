@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Book Recommendations</title>
+    <style>
+        .book-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .book {
+            border: 1px solid #ccc;
+            padding: 10px;
+            width: 200px;
+            text-align: center;
+        }
+        .book img {
+            max-width: 100%;
+            height: auto;
+        }
+        .book h3 {
+            font-size: 1.2em;
+            margin: 10px 0;
+        }
+        .book p {
+            font-size: 0.9em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Book Recommendations</h1>
+    <form method="get">
+        <label for="genre">Genre:</label>
+        <input type="text" id="genre" name="genre" placeholder="Enter genre">
+        <button type="submit">Search</button>
+    </form>
+
+    <div class="book-container" th:if="${books != null}">
+        <div class="book" th:each="book : ${books}">
+            <img th:if="${book.coverUrl != null}" th:src="${book.coverUrl}" alt="Book Cover">
+            <img th:if="${book.coverUrl == null}" src="https://via.placeholder.com/150?text=No+Image" alt="No Cover Available">
+            <h3 th:if="${book.title != null}" th:text="${book.title}">Book Title</h3>
+            <p th:if="${book.author != null}" th:text="'Author: ' + ${book.author}">Author Name</p>
+        </div>
+    </div>
+
+    <p th:if="${books == null || books.size() == 0}">No books found for the selected genre. Try another search!</p>
+</body>
+</html>
+
