@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Recomendación por Género</title>
+</head>
+<body>
+    <h1>Programas del Género: <span th:text="${genre}"></span></h1>
+
+    <ul>
+        <li th:each="show : ${shows}">
+            <h2 th:text="${show.get('name')}"></h2>
+            <img th:src="${show.get('image') != null ? show.get('image').get('medium') : ''}" alt="Imagen del programa">
+            <p th:utext="${show.get('summary')}"></p>
+            <a th:href="${show.get('url')}" target="_blank">Más Información</a>
+        </li>
+    </ul>
+
+    <a href="/">Regresar al inicio</a>
+</body>
+</html>
+

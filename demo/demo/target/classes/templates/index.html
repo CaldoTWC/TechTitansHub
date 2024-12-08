@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>TVmaze Recommender</title>
+</head>
+<body>
+    <h1>Bienvenido al Sistema de Recomendación de TVmaze</h1>
+    <a href="/recommendations/random">Recomendación Aleatoria</a>
+
+    <h2>Buscar por Género</h2>
+    <form action="/recommendations/genre" method="get">
+        <select name="genre">
+            <option value="">Seleccione un género</option>
+            <option th:each="genre : ${genres}" th:value="${genre}" th:text="${genre}"></option>
+        </select>
+        <button type="submit">Buscar</button>
+    </form>
+</body>
+</html>
